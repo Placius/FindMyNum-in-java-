@@ -35,12 +35,19 @@ public class JavaApplication {
         while(x != y){
             System.out.println("Próba " + Integer.toString(tries));
             System.out.println("Twój typ: ");
-            // pobranie liczby od użytkownika
-            String userString = scanner.nextLine();
-            // zamiana pobranej liczby na typ integer(liczbowy)
-            x = Integer.parseInt(userString);
-            // informacja zwrotna (podpowiedź)
-            if(x < y){System.out.println("Moja liczba jest większa..."); 
+            try {
+                    // pobranie liczby od użytkownika
+                    String userString = scanner.nextLine();
+                    // zamiana pobranej liczby na typ integer(liczbowy)
+                    x = Integer.parseInt(userString);
+                }
+                catch (IllegalArgumentException exception) { 
+                    System.out.println("Musisz wprowadzić liczbę!");
+                }
+            // informacje zwrotne (podpowiedzi)
+            if(x < 1 || x > 100){System.out.println("Wprowadź liczbę z przedziału od 1 do 100!");}
+            
+            else if(x < y){System.out.println("Moja liczba jest większa..."); 
                 // zaktualizowanie numeru próby 
                 tries++;}
             else if(x > y){System.out.println("Moja liczba jest mniejsza...");
